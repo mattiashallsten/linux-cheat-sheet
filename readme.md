@@ -42,6 +42,13 @@ __Check kernel version__
 $ cat /proc/version
 ```
 
+## Basic software
+### Desktop environment
+I use XFCE, that's shipped with Ubuntu Studio. Nothing fancy here.
+
+### Email
+I use [Geary](https://wiki.gnome.org/Apps/Geary) for my emails. It's quick and easy to set up, and talks to Gmail (which Thunderbird has had troubles with). To get Gmail up and running, you need to use [app-specific passwords](https://support.google.com/accounts/answer/185833?hl=sv).
+
 ## Audio
 
 ### KXStudio
