@@ -53,7 +53,7 @@ I use [Geary](https://wiki.gnome.org/Apps/Geary) for my emails. It's quick and e
 
 ### KXStudio
 
-Great resource for audio apps. [Link to their website](kx.studio).
+Great resource for audio apps. [Link to their website](https://kx.studio/).
 
 ### Reaper
 
