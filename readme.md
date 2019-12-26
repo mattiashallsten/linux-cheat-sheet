@@ -54,6 +54,18 @@ I use XFCE, that's shipped with Ubuntu Studio. Nothing fancy here.
 
 ### Email
 I use [Geary](https://wiki.gnome.org/Apps/Geary) for my emails. It's quick and easy to set up, and talks to Gmail (which Thunderbird has had troubles with). To get Gmail up and running, you need to use [app-specific passwords](https://support.google.com/accounts/answer/185833?hl=sv).
+p
+### Music player
+
+I use Lollypop as my music player. To install, you have to add the Lollypop repositories to `apt`:
+
+```
+$ sudo add-apt-repository ppa:gnumdk/lollypop
+$ sudo apt update
+$ sudo apt install lollypop
+```
+
+It finds all the album art and stuff for you.
 
 ## Audio
 
