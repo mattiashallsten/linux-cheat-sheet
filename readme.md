@@ -10,6 +10,33 @@ Ubuntu Studio comes with a bunch of audio software, like [Pure Data](https://pur
 
 The feature that got me interested, though, was that it ships with a low-latency kernel.
 
+### Apt
+`apt` is the package manager for Debian-based systems (Ubuntu being one of them). To install most software, the user types: 
+
+```
+$ sudo apt install <name-of-package>
+```
+
+The "sudo" part is to run the command as root, so the user will be prompted to input their password.
+
+If the user wants to add other software than is supported on the standard repositories (the Ubuntu servers), the user can use the command `apt-add-repository`. Often times when you search for a piece of software for Ubuntu on a web browser, you'll find a website for that repository -- then you usually do this:
+
+```
+$ sudo apt-add-repository <name-of-repo>
+$ sudo apt update
+$ sudo apt install <name-of-package>
+```
+
+To list the repositories that has been added to `apt`, run this command:
+
+```
+$ ls /etc/apt/sources.list.d/
+```
+
+#### Synaptic package manager
+
+...is a graphic frontend to `apt`. Here you can search for packages and install them, and it's quite user-friendly.
+
 ### Connect to eduroam
 
 Super important for me, du to studying at a university. 
@@ -40,6 +67,12 @@ __System monitor__
 
 ```
 $ htop
+```
+
+__Check OS version__
+
+```
+$ cat /etc/os-release
 ```
 
 __Check kernel version__
