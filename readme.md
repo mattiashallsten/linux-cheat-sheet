@@ -2,20 +2,19 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [Linux cheat sheet](#linux-cheat-sheet)
-    - [System](#system)
-        - [Apt](#apt)
-            - [Synaptic package manager](#synaptic-package-manager)
-        - [Connect to eduroam](#connect-to-eduroam)
-        - [Hardware/software info](#hardwaresoftware-info)
-    - [Basic software](#basic-software)
-        - [Desktop environment](#desktop-environment)
-        - [Email](#email)
-        - [Music player](#music-player)
-    - [Audio](#audio)
-        - [KXStudio](#kxstudio)
-        - [Reaper](#reaper)
-        - [SuperCollider](#supercollider)
+- [System](#system)
+  - [Apt](#apt)
+  - [Synaptic package manager](#synaptic-package-manager)
+  - [Connect to eduroam](#connect-to-eduroam)
+  - [Hardware/software info](#hardwaresoftware-info)
+- [Basic software](#basic-software)
+  - [Desktop environment](#desktop-environment)
+  - [Email](#email)
+  - [Music player](#music-player)
+- [Audio](#audio)
+  - [KXStudio](#kxstudio)
+  - [Reaper](#reaper)
+  - [SuperCollider](#supercollider)
 
 <!-- markdown-toc end -->
 
