@@ -63,6 +63,22 @@ Super important for me, du to studying at a university.
 
 [Guide](https://www.sheffield.ac.uk/cics/wireless/linux)
 
+Here are the settings I use:
+
+__Security:__ WPA & WPA2 Enterprise
+
+__Authentication:__ Protected EAP (PEAP)
+
+__Anonymous Identity:__ Blank
+
+__Domain:__ Blank
+
+__No CA certificate is required:__ Checked
+
+__PEAP version:__ Version 0
+
+__Inner authentication:__ MSCHAPv2
+
 ### Hardware/software info
 
 __List USB devices__
