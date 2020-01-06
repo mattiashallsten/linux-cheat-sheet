@@ -65,19 +65,33 @@ Super important for me, du to studying at a university.
 
 Here are the settings I use:
 
-__Security:__ WPA & WPA2 Enterprise
+__Security:__ 
 
-__Authentication:__ Protected EAP (PEAP)
+WPA & WPA2 Enterprise
 
-__Anonymous Identity:__ Blank
+__Authentication:__ 
 
-__Domain:__ Blank
+Protected EAP (PEAP)
 
-__No CA certificate is required:__ Checked
+__Anonymous Identity:__ 
 
-__PEAP version:__ Version 0
+Blank
 
-__Inner authentication:__ MSCHAPv2
+__Domain:__ 
+
+Blank
+
+__No CA certificate is required:__ 
+
+Checked
+
+__PEAP version:__ 
+
+Version 0
+
+__Inner authentication:__ 
+
+MSCHAPv2
 
 ### Hardware/software info
 
@@ -123,7 +137,10 @@ I use XFCE, that's shipped with Ubuntu Studio. Nothing fancy here.
 
 ### Email
 I use [Geary](https://wiki.gnome.org/Apps/Geary) for my emails. It's quick and easy to set up, and talks to Gmail (which Thunderbird has had troubles with). To get Gmail up and running, you need to use [app-specific passwords](https://support.google.com/accounts/answer/185833?hl=sv).
-p
+
+#### Spell checking in Geary
+To get Swedish spell checking to work in Geary, i installed two packages: `hunspell-sv` and `ispell-sv`. It works now.
+
 ### Music player
 
 I use Lollypop as my music player. To install, you have to add the Lollypop repositories to `apt`:
@@ -135,7 +152,7 @@ $ sudo apt install lollypop
 ```
 
 It finds all the album art and stuff for you.
-
+	
 ## Audio
 
 ### KXStudio
