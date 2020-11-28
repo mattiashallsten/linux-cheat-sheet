@@ -1,0 +1,220 @@
+#+title: Linux Configuration
+#+author: Mattias Hållsten
+#+options: toc:nil num:nil
+* System
+I'm running Arch Linux on a ThinkPad X201.
+* Network manager
+As is recommended in the installation guide on the archwiki, I've installed the package =networkmanager= and enabled it to make internet work. The package ships with the cli tools =nmtui= for connecting, but I've found it easier at times to use a GUI tool for this: =nm-connection-editor=. Through this program, I've configured eduroam:
+
+** Connect to eduroam
+
+Super important for me, du to studying at a university. 
+
+[[https://www.sheffield.ac.uk/cics/wireless/linux][Guide]]
+
+Here are the settings I use:
+
+*** Security:
+
+WPA & WPA2 Enterprise
+
+*** Authentication:
+
+Protected EAP (PEAP)
+
+*** Anonymous Identity:
+
+Blank
+
+*** Domain:
+
+Blank
+
+*** No CA certificate is required:
+
+Checked
+
+*** PEAP version:
+
+Version 0
+
+*** Inner authentication:
+
+MSCHAPv2
+
+* AUR
+I use =yay= to install stuff from the AUR:
+#+begin_src sh
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+#+end_src
+* Window manager
+** XMonad
+Configured via a haskell file located in =$HOME/.xmonad/xmonad.hs=.
+#+begin_src sh
+  sudo pacman -S xmonad xmonad-contrib xmobar
+#+end_src
+*** XMobar
+...is the bar I use with =xmonad=. I place the configuration file in =$HOME/.config/xmobar/xmobarrc.hs=, and when invoking =xmobar= in my XMonad configuration I point to there (the default location is =$HOME/.xmobarrc=. I name it =.hs= to have Emacs invoke =haskell-mode=, for syntax highlighting.
+** Openbox
+Configured via configuration files located in =$HOME/.config/openbox/=. I use the bar =tint2=, non-configured at this point.
+#+begin_src sh
+  sudo pacman -S openbox tint2
+#+end_src
+* Display manager
+Super simple: =lightdm= with the =lightdm-gtk-greeter=.
+#+begin_src sh
+  sudo pacman -S lightdm ligthdm-gtk-greeter
+#+end_src
+
+To enable:
+#+begin_src sh
+  systemctl enable lightdm
+#+end_src
+* Icons
+Install the =gnome-icon-theme=, so that my notifications look nice.
+#+begin_src sh
+  sudo pacman -S gnome-icon-theme
+#+end_src
+* File manager
+** PCManFM
+Basic and simple. For automatic mounting of drives, as well as trash can support, to work I also install =gvfs=. 
+#+begin_src sh
+  sudo pacman -S pcmanfm gvfs
+#+end_src
+
+* Notification manager
+** Dunst
+=dunst= is what allows X to receive notifications and display them. I have it enabled at startup with XMonad and Openbox, but I should probably turn it into a =systemd= service. Anyway:
+#+begin_src sh
+  sudo pacman -S dunst
+#+end_src
+** Bato
+=bato= is a small utility that sends notifications on the battery status. It requires =libnotify=.
+#+begin_src sh
+  sudo pacman -S libnotify
+  yay -S bato-bin
+#+end_src
+* Web browser
+** Firefox
+#+begin_src sh
+  sudo pacman -S firefox
+#+end_src
+** qutebrowser
+#+begin_src sh
+  sudo pacman -S qutebrowser
+#+end_src
+** Chromium
+#+begin_src sh
+  sudo pacman -S chromium
+#+end_src
+* Text editor
+** Emacs
+For all of the editing.
+#+begin_src sh
+  sudo pacman -S emacs
+#+end_src
+
+To make the =emacsclient= setup work, I have to do two things:
+
+1. Enable the emacs daemon at startup, i.e adding this line to something like =$HOME/.xsession=:
+
+#+begin_src sh
+  emacs --daemon
+#+end_src
+
+2. Add a .destkop file for emacs:
+
+#+begin_src text
+  [Desktop Entry]
+  Name=Emacs client
+  GenericName=Text Editor
+  Comment=Edit text
+  MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+  Exec=emacsclient -c %F
+  Icon=emacs
+  Type=Application
+  Terminal=false
+  Categories=Development;TextEditor;
+  StartupWMClass=Emacs
+  Keywords=Text;Editor;
+#+end_src
+
+...and put it in either =/usr/share/applications= or =$HOME/.local/share/applications=.
+
+This way, I can launch the client as a desktop app, for example from PCManFM. I also bind it to a keybinding, usually =super+e=.
+** Vim
+For situations in a =tty=.
+#+begin_src sh
+  sudo pacman -S vim
+#+end_src
+* PDF reader
+I'm trying out =zathura=:
+#+begin_src sh
+  sudo pacman -S zathura zathura-pdf-poppler
+#+end_src
+* LaTeX
+LaTeX is installed with the package =textlive-most=. 2 GB!
+#+begin_src sh
+  sudo pacman -S textlive-most
+#+end_src
+* Media playback
+** mpv
+=mpv= is like an extended version of =mplayer=, with a much more easy-to-use interface.
+#+begin_src sh
+  sudo pacman -S mpv
+#+end_src
+* Terminal emulator
+** rxvt-unicode (urxvt)
+Configured via =$HOME/.Xresources=. It is extended with perl plugins, by putting the perl files in =$HOME/.urxvt/ext/=.
+#+begin_src sh
+  sudo pacman -S rxvt-unicode
+#+end_src
+* Audio
+This is all really dependant on whether I choose to make music on this machine or not. My initial idea was for it to be strictly for writing text, and I go back and forth each day as to what I want to do.
+
+I'll keep the info here for now, though.
+
+** Jack
+Jack is a audio server, running alongside =pulseaudio= and =ALSA=. With Jack, you can route audio between applications, and the overall experience is much nicer. 
+#+begin_src sh
+  sudo pacman -S jack2
+#+end_src
+** Cadence
+=cadence= is a front-end to jack, which makes the whole experience a whole lot nicer.
+#+begin_src sh
+  sudo pacman -S cadence
+#+end_src
+
+** Ubuntu Studio Controls
+You can install the studio controls program from Ubuntu studio via the AUR. This is another front-end to =jack=, which is rather user-friendly and does some necessary configuration and integration with =pulseaudio= and =alsa=.
+#+begin_src sh
+  yay -S studio-controls-git
+#+end_src
+** Reaper
+There is a package for reaper in the community repos for arch.
+#+begin_src sh
+  yay -S reaper-bin
+#+end_src
+
+** Plug-ins
+The IEM plug-in suite is available over at the Arch user repos.
+#+begin_src sh
+  yay -S iempluginsuite
+#+end_src
+After installation, the plugins are placed in =/usr/lib/vst/=, so this has to be added as a VST path for REAPER to search for.
+* Additional scripts
+Are all found in the =scripts= directory in this directory. Add them to somewhere in =$PATH=, i.e =/usr/local/bin/=, =$HOME/.local.bin/= etc.
+* Additions to =.bashrc=
+#+begin_src sh
+  # mattias alias
+  alias q='exit'
+  alias c='clear'
+
+  create_playlist() {
+	  find -maxdepth 1 -type f -iname \*.mp3 -o -iname \*.wav | sort > playlist.m3u
+  }
+#+end_src
+* Links
+- [[https://jackaudio.org/faq/linux_rt_config.html][Configure Linux system to allow JACK to use real-time scheduling]]
